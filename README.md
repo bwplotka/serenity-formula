@@ -65,12 +65,11 @@ Do all steps from above section except 5. Theses formulas will use dcos-roles.
         
 Or just deploy on slaves:
 
-        $ salt -G 'dcos-roles:slave' state.sls serenity.deploy
+        $ salt -G 'mesos-roles:slave' state.sls serenity.deploy
 
 Under the DCOS in case of need for reverting mesos to the DCOS version just run:
-```
-  $ salt '*' state.sls serenity.use_dcos
-```
+        
+        $ salt '*' state.sls serenity.use_dcos
 
 ## Marathon installation and usage via serenity-formula:
 
@@ -82,7 +81,7 @@ In case of willing to run custom marathon using this formula you need some addit
 2. Download marathon.jar (version you want to have in your cluster)
 3. Use `serenity.deploy_with_marathon` instead of `serenity.deploy_all`
 
-        $ salt -G 'dcos-roles:slave' state.sls serenity.deploy_with_marathon
+        $ salt -G 'mesos-roles:slave' state.sls serenity.deploy_with_marathon
 
 
 ## Other information:
