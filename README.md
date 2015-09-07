@@ -45,8 +45,9 @@ On salt master node:
 
         $ salt '*' state.sls serenity.setup
  
-8. Configure your build system to put mesos build in `/srv/formulas/serenity/build/mesos_latest/`
-9. Make sure that `/srv/formulas/serenity/build/` has write rights for your build system.
+8. Configure your build system to put Mesos build in `/srv/formulas/serenity/build/mesos_latest/`
+9. Configure your build system to put [Serenity build](https://github.com/mesosphere/serenity#building-serenity-with-cmake) in `/srv/formulas/serenity/build/serenity_latest/`
+10. Make sure that `/srv/formulas/serenity/build/` has write rights for your build system.
 
 ## Installation under DCOS:
 These formulas are able to work also under the DCOS.
