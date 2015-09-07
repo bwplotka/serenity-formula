@@ -1,0 +1,15 @@
+LD_LIBRARY_PATH=/opt/serenity/mesos/lib:/opt/serenity/lib
+
+PATH=/usr/sbin:/usr/bin:/opt/serenity/mesos/bin
+
+MESOS_NATIVE_JAVA_LIBRARY=/opt/serenity/mesos/lib/libmesos.so
+
+JAVA_LIBRARY_PATH=/opt/serenity/mesos/lib/
+
+# In case of DCOS we can use these:
+#HDFS_MESOS_CONFIG_PATH=/opt/mesosphere/etc/hadoop/hdfs-site.xml
+#JAVA_HOME=/opt/mesosphere/active/java/usr/java
+#PYTHONPATH=/opt/mesosphere/lib/python3.4/site-packages
+
+
+

@@ -1,0 +1,15 @@
+{
+  "libraries": [
+    {
+      "file": "{{ salt['pillar.get']('serenity:serenity_lib_path', '/opt/serenity/mesos/lib/libserenity.so') }}",
+      "modules": [
+        {
+          "name": "{{ salt['pillar.get']('serenity:resource_estimator', 'com_mesosphere_mesos_SerenityEstimator') }}"
+        },
+        {
+          "name": "{{ salt['pillar.get']('serenity:qos_controller', 'com_mesosphere_mesos_SerenityController') }}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+#pillar
+serenity:
+  # Load balancer IP
+  master_lb: <MASTER_IP>
+  quorum: 3
+  zookeeper_cluster_size: 5
+  dns:
+    resolvers:
+      - <RESOLVER_IP>
+    fallback: <FALLBACK_IP>
+
+  # Place mesos build here (and serenity .so in lib/)
+  build_root: salt://serenity/build/mesos_latest
+  resource_estimator: com_mesosphere_mesos_SerenityEstimator
+  qos_controller: com_mesosphere_mesos_SerenityController
+  executor_env_json: /opt/serenity/mesos/etc/mesos-executor.json
+
+  marathon:
+    logging_level: INFO
+
+  # List of environment variables to be set on node in form:
+  # env_vars: [ INFLUX_DB_PATH=<..>, ANOTHER_VAR=<...>]
+  env_vars: []
+
+# Uncomment that if you need change the defaults:
+#  mesos:
+#    master:
+#      log_dir: /var/log/serenity
+#      work_dir: /var/lib/serenity/master
+#      zk: zk://127.0.0.1:2181/mesos
+#      roles: slave_public,serenity,serenity_us
+#      webui_dir: /opt/serenity/mesos/share/mesos/webui
+#
+#    slave:
+#      launcher_dir: /opt/serenity/mesos/libexec/mesos
+#      log_dir: /var/log/serenity
+#      work_dir: /var/lib/serenity/slave
+#      master: zk://leader.mesos:2181/mesos
+#      containerizers: docker,mesos
+#      executor_registration_timeout: 20mins
+#      isolation: cgroups/mem,cgroups/cpu,cgroups/perf_event
+#      resources: ports:[1025-2180,2182-3887,3889-5049,5052-8079,8082-8180,8182-65535]
+#      subsystems: cpu,memory
+#      perf_events: cycles,instructions
+#      perf_duration: 1secs
+#      perf_interval: 5secs
+#      oversubscribed_resources_interval: 15secs
+#      resource_monitoring_interval: 1secs
+#      qos_correction_interval_min: 0ns
+#      modules: file:///opt/serenity/serenity.json.in
+
+# These are already specified:
+#      resource_estimator: com_mesosphere_mesos_SerenityEstimator
+#      qos_controller: com_mesosphere_mesos_SerenityController
+
+# Not used:
+#    slave-public:
+#      log_dir: /var/log/mesos
+#      work_dir: /var/lib/mesos/slave-public
+#      master: zk://leader.mesos:2181/mesos
+#      containerizers: docker, mesos
+#      executor_registration_timeout: 5mins
+#      isolation: cgroups/cpu,cgroups/mem
+#      resources: ports:[1-21,23-5050,5052-65535]
+#      subsystems: cpu,memory
+#      default_role: slave_public
+#      attributes: public_ip:true

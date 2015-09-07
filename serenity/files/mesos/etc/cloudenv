@@ -1,0 +1,5 @@
+ZOOKEEPER_CLUSTER_SIZE={{ salt['pillar.get']('serenity:zookeeper_cluster_size','1') }}
+MASTER_ELB={{ salt['pillar.get']('serenity:master_lb','') }}
+FALLBACK_DNS={{ salt['pillar.get']('serenity:dns:fallback','8.8.8.8') }}
+EXHIBITOR_HOSTNAME={{ salt['grains.get']('fqdn') }}
+MARATHON_HOSTNAME={{ salt['grains.get']('fqdn') }}

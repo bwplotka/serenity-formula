@@ -1,0 +1,2 @@
+MARATHON_LOGGING_LEVEL={{ salt['pillar.get']('serenity:marathon:logging_level', 'INFO') }}
+MARATHON_TASK_LAUNCH_TIMEOUT="1200000"

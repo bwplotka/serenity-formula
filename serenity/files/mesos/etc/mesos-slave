@@ -1,0 +1,23 @@
+MESOS_MASTER={{ salt['pillar.get']('serenity:mesos:slave:master', 'zk://leader.' + salt['pillar.get']('serenity:dns:domain', 'mesos') + ':2181/mesos') }}
+MESOS_LAUNCHER_DIR={{ salt['pillar.get']('serenity:mesos:slave:launcher_dir', '/opt/serenity/mesos/libexec/mesos') }}
+MESOS_CONTAINERIZERS={{ salt['pillar.get']('serenity:mesos:slave:containerizers', 'docker,mesos') }}
+MESOS_LOG_DIR={{ salt['pillar.get']('serenity:mesos:slave:log_dir', '/var/log/serenity') }}
+MESOS_EXECUTOR_REGISTRATION_TIMEOUT={{ salt['pillar.get']('serenity:mesos:slave:executor_registration_timeout', '20mins') }}
+MESOS_ISOLATION={{ salt['pillar.get']('serenity:mesos:slave:isolation', 'cgroups/mem,cgroups/cpu,cgroups/perf_event') }}
+MESOS_WORK_DIR={{ salt['pillar.get']('serenity:mesos:slave:work_dir', '/var/lib/serenity/slave') }}
+MESOS_RESOURCES={{ salt['pillar.get']('serenity:mesos:slave:resources', 'ports:[1025-2180,2182-3887,3889-5049,5052-8079,8082-8180,8182-65535]') }}
+MESOS_SLAVE_SUBSYSTEMS={{ salt['pillar.get']('serenity:mesos:slave:subsystems', 'cpu,memory') }}
+MESOS_HOSTNAME={{ salt['grains.get']('fqdn') }}
+MESOS_IP={{ salt['network.interfaces']()['ens802f0']['inet'][0]['address'] }}
+MESOS_PERF_EVENTS={{ salt['pillar.get']('serenity:mesos:slave:perf_events', 'cycles,instructions') }}
+MESOS_PERF_DURATION={{ salt['pillar.get']('serenity:mesos:slave:perf_duration', '1secs') }}
+MESOS_PERF_INTERVAL={{ salt['pillar.get']('serenity:mesos:slave:perf_interval', '5secs') }}
+MESOS_MODULES={{ salt['pillar.get']('serenity:mesos:slave:modules', 'file:///opt/serenity/serenity.json.in') }}
+MESOS_RESOURCE_ESTIMATOR={{ salt['pillar.get']('serenity:resource_estimator', 'com_mesosphere_mesos_SerenityEstimator') }}
+MESOS_OVERSUBSCRIBED_RESOURCES_INTERVAL={{ salt['pillar.get']('serenity:slave:oversubscribed_resources_interval', '15secs') }}
+MESOS_RESOURCE_MONITORING_INTERVAL={{ salt['pillar.get']('serenity:slave:resource_monitoring_interval', '1secs') }}
+MESOS_QOS_CONTROLLER={{ salt['pillar.get']('serenity:qos_controller', 'com_mesosphere_mesos_SerenityController') }}
+MESOS_QOS_CORRECTION_INTERVAL_MIN={{ salt['pillar.get']('serenity:slave:qos_correction_interval_min', '0ns') }}
+{% import_text "serenity/files/mesos/etc/mesos-executor.json" as exec_env_vars %}
+MESOS_EXECUTOR_ENVIRONMENT_VARIABLES='{{ exec_env_vars }}'
+MESOS_DEFAULT_ROLE={{salt['grains.get']('mesos-default-role', 'slave_public')}}

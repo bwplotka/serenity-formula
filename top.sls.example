@@ -1,0 +1,9 @@
+base:
+  'dcos-roles:*':
+    - match: grain
+    - dcos
+    - serenity
+
+  'mesos-roles:*':
+    - match: grain
+    - serenity

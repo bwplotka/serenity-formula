@@ -1,0 +1,8 @@
+MESOS_LOG_DIR={{ salt['pillar.get']('serenity:mesos:master:log_dir', '/var/log/serenity') }}
+MESOS_WORK_DIR={{ salt['pillar.get']('serenity:mesos:master:work_dir', '/var/lib/serenity/master') }}
+MESOS_ZK={{ salt['pillar.get']('serenity:mesos:master:zk', 'zk://127.0.0.1:2181/mesos') }}
+MESOS_QUORUM={{ salt['pillar.get']('serenity:quorum', '3') }}
+MESOS_CLUSTER={{ salt['pillar.get']('serenity:cluster_name', 'MesosWithSerenity') }}
+MESOS_HOSTNAME={{ salt['grains.get']('fqdn') }}
+MESOS_ROLES={{ salt['pillar.get']('serenity:mesos:master:roles', 'slave_public,serenity,serenity_us') }}
+MESOS_WEBUI_DIR={{ salt['pillar.get']('serenity:mesos:master:webui_dir', '/opt/serenity/mesos/share/mesos/webui') }}
