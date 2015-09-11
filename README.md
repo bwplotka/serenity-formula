@@ -6,7 +6,7 @@ For the full Salt Formulas installation and usage see [instructions](http://docs
 For official Serenity page see [Project Serenity](https://github.com/mesosphere/serenity).
 
 ## Requirements
-* Zookeper is working. TODO(bplotka): Point to proper tutorial - when using DCOS Zookeeper properly configured.
+* Zookeeper is working on all Master nodes (in HA) on default 2181 port.
 * Salt installed and configured on nodes.
 * Proper DNS and hostname setup.
 * Master and Slaves nodes must be able to communicate freely with each other.
