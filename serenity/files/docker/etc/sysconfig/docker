@@ -29,7 +29,6 @@ INSECURE_REGISTRY='--insecure-registry'
 # If you have a registry secured with https but do not have proper certs
 # distributed, you can tell docker to not look for full authorization by
 # adding the registry to the INSECURE_REGISTRY line and uncommenting it.
-{{ salt['pillar.get']('serenity:marathon:logging_level', 'INFO') }}
 # INSECURE_REGISTRY='--insecure-registry'
 
 # On an SELinux system, if you remove the --selinux-enabled option, you
