@@ -52,6 +52,12 @@
 /etc/security/limits.conf:
   file.managed:
     - source: salt://serenity/files/mesos/etc/security/limits.conf
+
+/etc/sysconfig/docker:
+  file.managed:
+    - source: salt://serenity/files/docker/etc/sysconfig/docker
+    - template: jinja
+
 {% endif %}
 
 systemctl daemon-reload:

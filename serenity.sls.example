@@ -22,6 +22,9 @@ serenity:
   # env_vars: [ INFLUX_DB_PATH=<..>, ANOTHER_VAR=<...>]
   env_vars: []
 
+  # Path to internal docker registry.
+  # insecure_docker_registry: <host1>
+
 # Uncomment that if you need change the defaults:
 #  mesos:
 #    master:
