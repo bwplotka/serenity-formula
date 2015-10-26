@@ -6,10 +6,7 @@ OPTIONS='--selinux-enabled'
 DOCKER_CERT_PATH=/etc/docker
 
 {% if 'none' != salt['pillar.get']('serenity:insecure_docker_registry', 'none') %}
-
-ADD_REGISTRY='--add-registry {{ salt['pillar.get']('serenity:insecure_docker_registry') }} '
-INSECURE_REGISTRY='--insecure-registry'
-
+INSECURE_REGISTRY='--insecure-registry {{ salt['pillar.get']('serenity:insecure_docker_registry') }}'
 {% endif %}
 
 
