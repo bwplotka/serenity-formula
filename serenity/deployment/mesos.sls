@@ -2,10 +2,9 @@
 
 {% set build_root = salt['pillar.get']('serenity:build_root', 'salt://serenity/build/mesos_latest') %}
 
-# Copy mesos (WARNING: Could be a long running job!)
-/opt/serenity/mesos/lib/libmesos-0.24.0.so:
+/opt/serenity/mesos/lib/libmesos.so:
   file.managed:
-    - source: {{ build_root }}/lib/libmesos-0.24.0.so
+    - source: {{ build_root }}/lib/libmesos.so
     - mode: 777
     - makedirs: True
 
