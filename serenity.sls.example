@@ -9,8 +9,14 @@ serenity:
       - <RESOLVER_IP>
     fallback: <FALLBACK_IP>
 
-  # Place mesos build here (and serenity .so in lib/)
-  build_root: salt://serenity/build/mesos_latest
+  # Setup new mesos path:
+  #mesos_master_service_name = none
+  #mesos_slave_service_name = none
+  # If none then salt will create new mesos services with Serenity enabled.
+  # If actual mesos service option is present then it will try to configure existing cluster.
+
+  # Place mesos/serenity build here (serenity .so in lib/)
+  # build_root: salt://serenity/build/mesos_latest
   resource_estimator: com_mesosphere_mesos_SerenityEstimator
   qos_controller: com_mesosphere_mesos_SerenityController
   executor_env_json: /opt/serenity/mesos/etc/mesos-executor.json
