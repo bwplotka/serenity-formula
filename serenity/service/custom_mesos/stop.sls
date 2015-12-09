@@ -7,7 +7,6 @@ systemctl stop {{ service_name }}:
 stop_custom_mesos:
   service.dead:
     - name: {{ service_name }}
-    - enable: False
 {% else %}
 {% set service_name = salt['pillar.get']('serenity:mesos_slave_service_name', 'mesos-slave') %}
 # Stop custom mesos.
@@ -17,6 +16,5 @@ systemctl stop {{ service_name }}:
 stop_custom_mesos:
   service.dead:
     - name: {{ service_name }}
-    - enable: False
 {% endif %}
 
