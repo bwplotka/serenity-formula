@@ -19,5 +19,7 @@ MESOS_RESOURCE_MONITORING_INTERVAL={{ salt['pillar.get']('serenity:slave:resourc
 MESOS_QOS_CONTROLLER={{ salt['pillar.get']('serenity:qos_controller', 'com_mesosphere_mesos_SerenityController') }}
 MESOS_QOS_CORRECTION_INTERVAL_MIN={{ salt['pillar.get']('serenity:slave:qos_correction_interval_min', '0ns') }}
 {% import_text "serenity/files/mesos/etc/mesos-executor.json" as exec_env_vars %}
-MESOS_EXECUTOR_ENVIRONMENT_VARIABLES='{{ exec_env_vars }}'
-MESOS_DEFAULT_ROLE={{salt['grains.get']('mesos-default-role', 'slave_public')}}
+MESOS_EXECUTOR_ENVIRONMENT_VARIABLES={{ salt['pillar.get']('serenity:slave:executor_environment_variables', exec_env_vars) }}
+MESOS_GC_DELAY={{ salt['pillar.get']('serenity:slave:gc_delay', '2days') }}
+MESOS_DOCKER_REMOVE_DELAY={{ salt['pillar.get']('serenity:slave:docker_remove_delay', '1hrs') }}
+MESOS_DEFAULT_ROLE={{ salt['grains.get']('mesos-default-role', 'slave_public') }}

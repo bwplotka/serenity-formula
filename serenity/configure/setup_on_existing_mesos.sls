@@ -12,25 +12,27 @@
     - source: salt://serenity/files/serenity.json.in
     - template: jinja
 
-# TODO(bplotka): For Daniel: Create such script.
-# Run script for appending serenity config to existing Mesos cluster(TODO!)
 {% if 'master' in salt['grains.get']('mesos-roles', salt['grains.get']('dcos-roles', [])) %}
-append_config:
-  cmd.script:
-    - source: salt://serenity/scripts/append_config.sh
-    - user: root
-    - group: root
-    - shell: /bin/bash
-    - args salt['pillar.get']('serenity:mesos_master_service_name', mesos-master) salt['grains.get']('mesos-roles', salt['grains.get']('dcos-roles', [])
+{% set conf_file = salt['pillar.get']('serenity:master_conf_path', /etc/mesos/mesos-master) %}
+{{ conf_file }}.backup:
+  file.copy:
+    - source: {{ conf_file }}
+
+{{ conf_file }}:
+  file.symlink:
+    - target: /opt/serenity/mesos/etc/mesos-master
+    - makedirs: True
 
 {% else %}
-append_config:
-  cmd.script:
-    - source: salt://serenity/scripts/append_config.sh
-    - user: root
-    - group: root
-    - shell: /bin/bash
-    - args salt['pillar.get']('serenity:mesos_slave_service_name', mesos-slave) salt['grains.get']('mesos-roles', salt['grains.get']('dcos-roles', [])
+{% set conf_file = salt['pillar.get']('serenity:slave_conf_path', /etc/mesos/mesos-master) %}
+{{ conf_file }}.backup:
+  file.copy:
+    - source: {{ conf_file }}
+
+{{ conf_file }}:
+  file.symlink:
+    - target: /opt/serenity/mesos/etc/mesos-slave
+    - makedirs: True
 
 /etc/security/limits.conf:
   file.managed:

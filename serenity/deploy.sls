@@ -8,7 +8,6 @@ include:
   - serenity.deployment.serenity
   - serenity.service.serenity_mesos.start
 {% else %}
-
   - serenity.service.custom_mesos.stop
   - serenity.deployment.serenity
   - serenity.service.custom_mesos.start
