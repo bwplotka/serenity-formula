@@ -44,6 +44,9 @@
     - file_mode: 777
 
 {% else %}
+perf:
+  pkg.installed
+
 /etc/systemd/system/serenity-mesos-slave.service:
   file.symlink:
     - target: /opt/serenity/mesos/etc/systemd/system/serenity.target.wants/serenity-mesos-slave.service

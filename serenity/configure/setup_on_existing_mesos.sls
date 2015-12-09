@@ -24,6 +24,9 @@
     - makedirs: True
 
 {% else %}
+perf:
+  pkg.installed
+
 {% set conf_file = salt['pillar.get']('serenity:slave_conf_path', '/etc/mesos/mesos-master') %}
 {{ conf_file }}.backup:
   file.copy:
