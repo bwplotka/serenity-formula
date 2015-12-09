@@ -13,7 +13,7 @@
     - template: jinja
 
 {% if 'master' in salt['grains.get']('mesos-roles', salt['grains.get']('dcos-roles', [])) %}
-{% set conf_file = salt['pillar.get']('serenity:master_conf_path', /etc/mesos/mesos-master) %}
+{% set conf_file = 'salt['pillar.get']('serenity:master_conf_path', /etc/mesos/mesos-master') %}
 {{ conf_file }}.backup:
   file.copy:
     - source: {{ conf_file }}
@@ -24,7 +24,7 @@
     - makedirs: True
 
 {% else %}
-{% set conf_file = salt['pillar.get']('serenity:slave_conf_path', /etc/mesos/mesos-master) %}
+{% set conf_file = 'salt['pillar.get']('serenity:slave_conf_path', /etc/mesos/mesos-master') %}
 {{ conf_file }}.backup:
   file.copy:
     - source: {{ conf_file }}
