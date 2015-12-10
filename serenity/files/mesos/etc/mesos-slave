@@ -1,91 +1,67 @@
 MESOS_MASTER={{ salt['pillar.get']('serenity:mesos:slave:master', 'zk://leader.' + salt['pillar.get']('serenity:dns:domain', 'mesos') + ':2181/mesos') }}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:launcher_dir', 'none') %}
 MESOS_LAUNCHER_DIR={{ salt['pillar.get']('serenity:mesos:slave:launcher_dir') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:containerizers', 'none') %}
 MESOS_CONTAINERIZERS={{ salt['pillar.get']('serenity:mesos:slave:containerizers') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:log_dir', 'none') %}
 MESOS_LOG_DIR={{ salt['pillar.get']('serenity:mesos:slave:log_dir') }}}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:executor_registration_timeout', 'none') %}
 MESOS_EXECUTOR_REGISTRATION_TIMEOUT={{ salt['pillar.get']('serenity:mesos:slave:executor_registration_timeout') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:isolation', 'none') %}
 MESOS_ISOLATION={{ salt['pillar.get']('serenity:mesos:slave:isolation') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:work_dir', 'none') %}
 MESOS_WORK_DIR={{ salt['pillar.get']('serenity:mesos:slave:work_dir') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:resources', 'none') %}
 MESOS_RESOURCES={{ salt['pillar.get']('serenity:mesos:slave:resources') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:subsystems', 'none') %}
 MESOS_SLAVE_SUBSYSTEMS={{ salt['pillar.get']('serenity:mesos:slave:subsystems') }}
 {% endif %}
-{##}
 MESOS_HOSTNAME={{ salt['grains.get']('fqdn') }}
-{##}
 #MESOS_IP={{ salt['network.interfaces']()['ens802f0']['inet'][0]['address'] }}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:perf_events', 'none') %}
 MESOS_PERF_EVENTS={{ salt['pillar.get']('serenity:mesos:slave:perf_events') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:perf_duration', 'none') %}
 MESOS_PERF_DURATION={{ salt['pillar.get']('serenity:mesos:slave:perf_duration') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:perf_interval', 'none') %}
 MESOS_PERF_INTERVAL={{ salt['pillar.get']('serenity:mesos:slave:perf_interval') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:modules', 'none') %}
 MESOS_MODULES={{ salt['pillar.get']('serenity:mesos:slave:modules') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:resource_estimator', 'none') %}
 MESOS_RESOURCE_ESTIMATOR={{ salt['pillar.get']('serenity:resource_estimator') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:oversubscribed_resources_interval', 'none') %}
 MESOS_OVERSUBSCRIBED_RESOURCES_INTERVAL={{ salt['pillar.get']('serenity:mesos:slave:oversubscribed_resources_interval') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:resource_monitoring_interval', 'none') %}
 MESOS_RESOURCE_MONITORING_INTERVAL={{ salt['pillar.get']('serenity:mesos:slave:resource_monitoring_interval') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:qos_controller', 'none') %}
 MESOS_QOS_CONTROLLER={{ salt['pillar.get']('serenity:qos_controller') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:qos_correction_interval_min', 'none') %}
 MESOS_QOS_CORRECTION_INTERVAL_MIN={{ salt['pillar.get']('serenity:mesos:slave:qos_correction_interval_min') }}
 {% endif %}
-{##}
 #{% import_text "serenity/files/mesos/etc/mesos-executor.json" as exec_env_vars %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:executor_environment_variables', 'none') %}
 MESOS_EXECUTOR_ENVIRONMENT_VARIABLES={{ salt['pillar.get']('serenity:mesos:slave:executor_environment_variables') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:gc_delay', 'none') %}
 MESOS_GC_DELAY={{ salt['pillar.get']('serenity:mesos:slave:gc_delay') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:docker_remove_delay', 'none') %}
 MESOS_DOCKER_REMOVE_DELAY={{ salt['pillar.get']('serenity:mesos:slave:docker_remove_delay') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['grains.get']('mesos-default-role', 'none') %}
 MESOS_DEFAULT_ROLE={{ salt['grains.get']('mesos-default-role') }}
 {% endif %}

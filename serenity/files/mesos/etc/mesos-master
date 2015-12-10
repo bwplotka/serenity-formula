@@ -1,35 +1,26 @@
 {% if not 'none' in salt['pillar.get']('serenity:mesos:master:log_dir', 'none') %}
 MESOS_LOG_DIR={{ salt['pillar.get']('serenity:mesos:master:log_dir') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:master:work_dir', 'none') %}
 MESOS_WORK_DIR={{ salt['pillar.get']('serenity:mesos:master:work_dir') }}
 {% endif %}
-{##}
 MESOS_ZK={{ salt['pillar.get']('serenity:mesos:master:zk', 'zk://127.0.0.1:2181/mesos') }}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:quorum', 'none') %}
 MESOS_QUORUM={{ salt['pillar.get']('serenity:quorum') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:cluster_name', 'none') %}
 MESOS_CLUSTER={{ salt['pillar.get']('serenity:cluster_name') }}
 {% endif %}
-{##}
 MESOS_HOSTNAME={{ salt['grains.get']('fqdn') }}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:master:roles', 'none') %}
 MESOS_ROLES={{ salt['pillar.get']('serenity:mesos:master:roles') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:master:webui_dir','none') %}
 MESOS_WEBUI_DIR={{ salt['pillar.get']('serenity:mesos:master:webui_dir') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:master:registry_fetch_timeout','none') %}
 MESOS_REGISTRY_FETCH_TIMEOUT={{ salt['pillar.get']('serenity:mesos:master:registry_fetch_timeout') }}
 {% endif %}
-{##}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:master:sasl_path','none') %}
 SASL_PATH={{ salt['pillar.get']('serenity:mesos:master:sasl_path') }}
 {% endif %}
