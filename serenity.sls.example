@@ -9,6 +9,7 @@ serenity:
       - <RESOLVER>
     fallback: <FALLBACK>
 
+  #cluster_name: mesos
   # Setup new mesos path:
   #mesos_master_service_name: mesos-master
   #mesos_slave_service_name: mesos-slave
