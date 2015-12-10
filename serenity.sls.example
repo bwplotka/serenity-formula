@@ -1,16 +1,25 @@
 #pillar
 serenity:
   # Load balancer IP
-  master_lb: <MASTER_IP>
-  quorum: 3
-  zookeeper_cluster_size: 5
+  master_lb: <LB IP>
+  quorum: 2
+  zookeeper_cluster_size: 3
   dns:
     resolvers:
-      - <RESOLVER_IP>
-    fallback: <FALLBACK_IP>
+      - <RESOLVER>
+    fallback: <FALLBACK>
 
-  # Place mesos build here (and serenity .so in lib/)
-  build_root: salt://serenity/build/mesos_latest
+  #cluster_name: mesos
+  # Setup new mesos path:
+  #mesos_master_service_name: mesos-master
+  #mesos_slave_service_name: mesos-slave
+  #master_conf_path: /etc/mesos/mesos-master
+  #slave_conf_path: /etc/mesos/mesos-slave
+  # If none then salt will create new mesos services with Serenity enabled.
+  # If actual mesos service option is present then it will try to configure existing cluster.
+
+  # Place mesos/serenity build here (serenity .so in lib/)
+  # build_root: salt://serenity/build/mesos_latest
   resource_estimator: com_mesosphere_mesos_SerenityEstimator
   qos_controller: com_mesosphere_mesos_SerenityController
   executor_env_json: /opt/serenity/mesos/etc/mesos-executor.json
@@ -28,19 +37,21 @@ serenity:
 # Uncomment that if you need change the defaults:
 #  mesos:
 #    master:
-#      log_dir: /var/log/serenity
-#      work_dir: /var/lib/serenity/master
+#      log_dir: /var/log/mesos
+#      work_dir: /var/lib/mesos/master
 #      zk: zk://127.0.0.1:2181/mesos
-#      roles: slave_public,serenity,serenity_us
-#      webui_dir: /opt/serenity/mesos/share/mesos/webui
-#
+#      roles: slave_public
+#      webui_dir: /usr/local/share/mesos/webui
+#      registry_fetch_timeout: 5hrs
+#      sasl_path: ?
+
 #    slave:
-#      launcher_dir: /opt/serenity/mesos/libexec/mesos
-#      log_dir: /var/log/serenity
-#      work_dir: /var/lib/serenity/slave
+#      launcher_dir: /usr/local/lib/mesos
+#      log_dir: /var/log/mesos
+#      work_dir: /var/lib/mesos/slave
 #      master: zk://leader.mesos:2181/mesos
 #      containerizers: docker,mesos
-#      executor_registration_timeout: 20mins
+#      executor_registration_timeout: 30mins
 #      isolation: cgroups/mem,cgroups/cpu,cgroups/perf_event
 #      resources: ports:[1025-2180,2182-3887,3889-5049,5052-8079,8082-8180,8182-65535]
 #      subsystems: cpu,memory
@@ -51,7 +62,9 @@ serenity:
 #      resource_monitoring_interval: 1secs
 #      qos_correction_interval_min: 0ns
 #      modules: file:///opt/serenity/serenity.json.in
-
+#      docker_remove_delay: 1hrs
+#      gc_delay: 2days
+#      executor_environment_variables: 
 # These are already specified:
 #      resource_estimator: com_mesosphere_mesos_SerenityEstimator
 #      qos_controller: com_mesosphere_mesos_SerenityController

@@ -28,26 +28,26 @@ On salt master node:
         file_roots:
           base:
             - /srv/formulas/serenity-formula
-
-3. Copy `serenity.sls.example` to `/srv/pillar/serenity.sls` and edit file to configuration.
+3. Restart `salt-master`.
+4. Copy `serenity.sls.example` to `/srv/pillar/serenity.sls` and edit file to configuration.
 (make sure that `dns` , `zookeeper_cluster_size` and `master_lb` are filled properly.
-4. Copy or append content from `top.sls.example` to `/srv/pillar/top.sls`
-5. Set roles for each node using salt:
+5. Copy or append content from `top.sls.example` to `/srv/pillar/top.sls`
+6. Set roles for each node using salt:
 
         $ salt 'masternode.example.com' grains.setval mesos-roles [master]
         $ salt 'agentnode.example.com' grains.setval mesos-roles [slave]
 
-6. Set roles for each slave if needed:
+7. Set roles for each slave if needed:
 
         $ salt 'agentnode.example.com' grains.setval mesos-default-role custom_role
         
-9. Run formula to prepare configuration:
+8. Run formula to prepare configuration:
 
         $ salt '*' state.sls serenity.setup
  
-8. Configure your build system to put Mesos build in `/srv/formulas/serenity/build/mesos_latest/`
-9. Configure your build system to put [Serenity build](https://github.com/mesosphere/serenity#building-serenity-with-cmake) in `/srv/formulas/serenity/build/serenity_latest/`
-10. Make sure that `/srv/formulas/serenity/build/` has write rights for your build system.
+9. [Optional] Configure your build system to put Mesos build in `/srv/formulas/serenity/build/mesos_latest/`
+10. Configure your build system to put [Serenity build](https://github.com/mesosphere/serenity#building-serenity-with-cmake) in `/srv/formulas/serenity/build/serenity_latest/`
+11. Make sure that `/srv/formulas/serenity/build/` has write rights for your build system.
 
 ## Installation under DCOS:
 These formulas are able to work also under the DCOS.

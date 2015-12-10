@@ -6,6 +6,6 @@ StartLimitInterval=0
 RestartSec=5
 KillMode=process
 EnvironmentFile=/opt/serenity/mesos/etc/environment
-EnvironmentFile=/opt/serenity/mesos/etc/mesos-slave
+EnvironmentFile=/opt/serenity/mesos/etc/serenity-mesos-slave
 ExecStartPre=/bin/ping -c1 leader.mesos
 ExecStart=/opt/serenity/mesos/sbin/mesos-slave
