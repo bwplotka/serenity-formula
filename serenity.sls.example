@@ -41,6 +41,7 @@ serenity:
 #      zk: zk://127.0.0.1:2181/mesos
 #      roles: slave_public
 #      webui_dir: /usr/local/share/mesos/webui
+#      registry_fetch_timeout: 5hrs
 
 #    slave:
 #      launcher_dir: /usr/local/lib/mesos

@@ -6,3 +6,4 @@ MESOS_CLUSTER={{ salt['pillar.get']('serenity:cluster_name', 'MesosWithSerenity'
 MESOS_HOSTNAME={{ salt['grains.get']('fqdn') }}
 MESOS_ROLES={{ salt['pillar.get']('serenity:mesos:master:roles', 'slave_public,serenity,serenity_us') }}
 MESOS_WEBUI_DIR={{ salt['pillar.get']('serenity:mesos:master:webui_dir', '/opt/serenity/mesos/share/mesos/webui') }}
+MESOS_REGISTRY_FETCH_TIMEOUT={{ salt['pillar.get']('serenity:mesos:master:registry_fetch_timeout', '5hrs') }}
