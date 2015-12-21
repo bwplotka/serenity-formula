@@ -55,7 +55,8 @@ serenity:
 #      isolation: cgroups/mem,cgroups/cpu,cgroups/perf_event
 #      resources: ports:[1025-2180,2182-3887,3889-5049,5052-8079,8082-8180,8182-65535]
 #      subsystems: cpu,memory
-#      perf_events: cycles,instructions
+#      perf_events: cycles,instructions,
+#      perf_events: cycles,instructions,intel_cqm/llc_occupancy/
 #      perf_duration: 1secs
 #      perf_interval: 5secs
 #      oversubscribed_resources_interval: 15secs
