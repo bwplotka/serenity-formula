@@ -10,3 +10,9 @@ symlink_libmesos2:
     - name: {{ libmesos_path }}/libmesos.so
     - target: /opt/serenity/mesos/lib/libmesos.so
     - force: True
+
+symlink_libmesos3:
+  file.symlink:
+    - name: {{ libmesos_path }}/libmesos.la
+    - target: /opt/serenity/mesos/lib/libmesos.la
+    - force: True
