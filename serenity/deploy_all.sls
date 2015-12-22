@@ -16,6 +16,7 @@ include:
   - serenity.service.custom_mesos.stop
   - serenity.deployment.serenity
   - serenity.deployment.mesos
+  - serenity.deployment.replace_mesos
   - serenity.service.custom_mesos.start
   - serenity.service.marathon.start
 {% endif %}
