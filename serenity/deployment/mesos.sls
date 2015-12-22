@@ -9,9 +9,9 @@ copy_libmesos:
     - mode: 777
     - makedirs: True
 
-/opt/serenity/mesos/lib/libmesos.so:
+/opt/serenity/mesos/lib/libmesos-0.24.1.so:
   file.symlink:
-    - target: /opt/serenity/mesos/lib/libmesos-0.24.0.so
+    - target: /opt/serenity/mesos/lib/libmesos.so
     - force: True
 
 /opt/serenity/mesos/bin:
