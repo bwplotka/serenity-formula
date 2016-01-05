@@ -16,3 +16,17 @@ symlink_libmesos3:
     - name: {{ libmesos_path }}/libmesos.la
     - target: /opt/serenity/mesos/lib/libmesos.la
     - force: True
+
+{% set mesos_slave_bin_path = salt['pillar.get']('serenity:mesos_slave_bin_path', '/bin') %}
+
+# Backup original content.
+backup_mesos_slave_bin1:
+  file.copy:
+    - name: {{ mesos_slave_bin_path }}/mesos-slave.backup
+    - source: {{ mesos_slave_bin_path }}/mesos-slave
+
+symlink_mesos_slave_bin1:
+  file.symlink:
+    - name: {{ mesos_slave_bin_path }}/mesos-slave
+    - target: /opt/serenity/mesos/sbin/mesos-slave
+    - force: True

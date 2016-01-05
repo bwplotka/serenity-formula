@@ -15,7 +15,9 @@ serenity:
   #mesos_slave_service_name: mesos-slave
   #master_conf_path: /etc/mesos/mesos-master
   #slave_conf_path: /etc/mesos/mesos-slave
+  #marathon_service_name: marathon
   #libmesos_path: /usr/lib/
+  #mesos_slave_bin_path: /sbin/
   # If none then salt will create new mesos services with Serenity enabled.
   # If actual mesos service option is present then it will try to configure existing cluster.
 

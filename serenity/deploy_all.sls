@@ -12,12 +12,12 @@ include:
   - serenity.service.serenity_mesos.start
   - serenity.service.marathon.start
 {% else %}
-  - serenity.service.marathon.stop
+  - serenity.service.custom_marathon.stop
   - serenity.service.custom_mesos.stop
   - serenity.deployment.serenity
   - serenity.deployment.mesos
   - serenity.deployment.replace_mesos
   - serenity.service.custom_mesos.start
-  - serenity.service.marathon.start
+  - serenity.service.custom_marathon.start
 {% endif %}
 
