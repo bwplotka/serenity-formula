@@ -24,7 +24,6 @@ MESOS_RESOURCES={{ salt['pillar.get']('serenity:mesos:slave:resources') }}
 MESOS_SLAVE_SUBSYSTEMS={{ salt['pillar.get']('serenity:mesos:slave:subsystems') }}
 {% endif %}
 MESOS_HOSTNAME={{ salt['grains.get']('fqdn') }}
-#MESOS_IP={{ salt['network.interfaces']()['ens802f0']['inet'][0]['address'] }}
 {% if not 'none' in salt['pillar.get']('serenity:mesos:slave:perf_events', 'none') %}
 MESOS_PERF_EVENTS={{ salt['pillar.get']('serenity:mesos:slave:perf_events') }}
 {% endif %}
