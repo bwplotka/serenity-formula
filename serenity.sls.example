@@ -39,6 +39,7 @@ serenity:
 
 # Uncomment that if you need change the defaults:
 #  mesos:
+#    version: 0.27.0
 #    master:
 #      log_dir: /var/log/mesos
 #      work_dir: /var/lib/mesos/master

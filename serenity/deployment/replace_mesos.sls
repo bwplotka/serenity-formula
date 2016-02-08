@@ -1,7 +1,9 @@
 {% set libmesos_path = salt['pillar.get']('serenity:libmesos_path', '/usr/lib') %}
+{% set mesos_version = salt['pillar.get']('serenity:mesos:version', '0.27.0') %}
+
 symlink_libmesos1:
   file.symlink:
-    - name: {{ libmesos_path }}/libmesos-0.24.1.so
+    - name: {{ libmesos_path }}/libmesos-{{ mesos_version}}.so
     - target: /opt/serenity/mesos/lib/libmesos.so
     - force: True
 
